@@ -6,5 +6,8 @@
   "repository": "git@github.com:vpeurala/amqp.node-example.git",
   "author": "Ville Peurala <ville.peurala@gmail.com>",
   "license": "MIT",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "amqplib": "^0.5.2"
+  }
 }
