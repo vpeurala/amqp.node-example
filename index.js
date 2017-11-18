@@ -9,5 +9,7 @@ amqp.connect("amqp://localhost").then(function (connection) {
     console.log("error: " + util.inspect(error));
 }).then(function (channel) {
     console.log("util.inspect(channel): " + util.inspect(channel));
-    return channel.checkQueue("bork");
+    return channel.assertQueue("bork");
+}).then(function (queue) {
+    console.log("util.inspect(queue): " + util.inspect(queue));
 });
