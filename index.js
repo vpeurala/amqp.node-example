@@ -1,10 +1,13 @@
 const amqp = require("amqplib");
 const util = require("util");
 
-amqp.connect("amqp://localhost").then(function(connection) {
+amqp.connect("amqp://localhost").then(function (connection) {
     console.log("util.inspect(connection): " + util.inspect(connection));
     console.log("Object.getOwnPropertyNames(connection): " + Object.getOwnPropertyNames(connection));
-    connection.close();
-}, function(error) {
+    return connection.createChannel();
+}, function (error) {
     console.log("error: " + util.inspect(error));
+}).then(function (channel) {
+    console.log("util.inspect(channel): " + util.inspect(channel));
+    return channel.checkQueue("bork");
 });
